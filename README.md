@@ -86,7 +86,10 @@ Once it opens the browser, login with Sitecore cloud portal user you have or cre
 3. Include URL of the changed item,  include important field names and values, in the message.
 4. Renew Bearer token if no more valid or every 24 hours programmatically.   
 ## References
+
 WhatsApp API Setup https://www.youtube.com/watch?v=ul_9qe_fiTY
+
+WhatsApp Message Formating https://faq.whatsapp.com/539178204879377/?cms_platform=web
 
 ## Team: Core Coder Conquerors
 ⟹ Developers:
