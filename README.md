@@ -5,73 +5,92 @@
 ⟹ Best Module for XM/XP or XM Cloud
 
 ## Description
-⟹ Send Item Audit updates to registered WhatsApp phone numbers.  
+⟹ Distribute Item Audit update notifications to the designated WhatsApp numbers.
 
-  - Real time item updates messages on the WhatsApp phone numbers. 
-  - EasyQuite often, we need to login to our inbox or Sitecore CM itself to view the items workflow status. Here, we 
+ - Receive timely updates regarding item changes directly on your registered WhatsApp phone numbers.
 
-  - What problem was solved (if any)
-    - How does this module solve it
+ - Access past item updates effortlessly through WhatsApp, providing convenient historical tracking.
 
-_You can alternately paste a [link here](#docs) to a document within this repo containing the description._
+ - This establishes the initial steps for integrating WhatsApp into our system.
+
+ - What problem was solved? 
+ 
+    - By receiving real-time item updates, content authors and reviewers can promptly take necessary actions, ensuring efficient workflow management.
 
 ## Video link
-⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
 ⟹ [Replace this Video link](#video-link)
 
-
-
 ## Pre-requisites and Dependencies
 
-⟹ Does your module rely on other Sitecore modules or frameworks?
-
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
-
-_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
-
+⟹ XM Cloud license file
 ## Installation instructions
-⟹ Write a short clear step-wise instruction on how to install your module.  
+⟹ Setup Facebook Developer Account
 
-> _A simple well-described installation process is required to win the Hackathon._  
-> Feel free to use any of the following tools/formats as part of the installation:
-> - Sitecore Package files
-> - Docker image builds
-> - Sitecore CLI
-> - msbuild
-> - npm / yarn
-> 
-> _Do not use_
-> - TDS
-> - Unicorn
- 
-for example:
+Create a Facebook Developer Account and setup WhatsApp API based on this document ![Create a Facebook Developer Account and setup WhatsApp API](docs/Create-Facebook-Developer-and-Setup-WhatsApp-API.pdf "Create a Facebook Developer Account and setup WhatsApp API")
 
-1. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-2. ...
-3. profit
+⟹ XM cloud local instance setup
 
+1. We had no Docker Desktop installed our local machine. Hence we have setup the Docker Engine binaries in our local. Check this to link https://blogs.perficient.com/2023/10/12/sitecore-containers-without-docker-desktop/ to setup Docker Engine in local if you do not have Docker Desktop.
+
+2. Ensure local IIS and SOLR are stoped.
+
+iisreset /stop
+
+Run Services.msc and stop the SOLR service if any.
+
+3. Run the Docker Engine.
+
+4. Sign up for an account on https://portal.sitecorecloud.io/ if you don't have one. Since this feature we test in local, we don't need to be part of any organization in the Sitecore Cloud portal. We create the account for authentication purpose in our local.
+
+1. git clone https://github.com/Sitecore-Hackathon/2024-Core-Coder-Conquerors.git
+and cd .\2024-Core-Coder-Conquerors\
+
+2. If you have Docker for Desktop, then please disable Docker Compose V2 By unchecking "Use Docker Compose V2" in Docker Compose General settings window. OR if you go with V2, then plese find docker-compose in up.ps1 file and replace with docker compose, and in docker-compose.override.yml, provide single forward slash instead of 2 forward slashes in the following line.
+entrypoint: powershell -Command "& C://tools//entrypoints//iis//Development.ps1"
+
+2. In an ADMIN terminal:
+
+    ```ps1
+    .\init.ps1 -InitEnv -LicenseXmlPath "C:\path\to\license.xml" -AdminPassword "DesiredAdminPassword"
+    ```
+
+3. Restart your terminal and run:
+
+    ```ps1
+    .\up.ps1
+    ```
+
+Once it opens the browser, login with Sitecore cloud portal user you have or created in the step 4.
 ### Configuration
-⟹ If there are any custom configuration that has to be set manually then remember to add all details here.
-
-_Remove this subsection if your entry does not require any configuration that is not fully covered in the installation instructions already_
-
+⟹ Covered in Installation steps.
 ## Usage instructions
-⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
+⟹ Setup in local XM Cloud instance and Test the items update upon workflow state changes.
 
-Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
+1. Login to Local Sitecore XM Coud instance.
 
-![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
+2. Install the Sitecore packages from /sitecore-packages folder, and overwrite upon prompt.
 
-You can embed images of different formats too:
+3. Traverse to Item : /sitecore/content/Skate Park/Skate Part Site/Settings/Items Audit Update Settings. Provide the WhatsApp phone numbers separated by comma (,) with Country code.
 
-![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
+4. In the file .\2024-Core-Coder-Conquerors\src\sxastarter\src\pages\api\whatsapp.ts, find PROVIDE_Bearer_TOKEN_HERE and replace it with Bearer token from the WhatsApp API Setup Dashboard.  Save.
 
-And you can embed external images too:
+4. Please check the Video for steps to test the feature.
 
-![Random](https://thiscatdoesnotexist.com/)
+## Future Improvments
 
-## Comments
-If you'd like to make additional comments that is important for your module entry.
+1. Send message to take action as commands - Approve, Reject and Approve in whatsapp. 
+2. XM cloud Webhook is not called when item > submitted > rejected > submitted again case. Frist 2 states it calls the webhook and 3rd item i.e. submit again does not call the webhook. This happened in local, not sure in the XM Cloud App. We will investigate this in detail.
+3. Include URL of the changed item,  include important field names and values, in the message.
+4. Make Bearer   
+## References
+WhatsApp API Setup https://www.youtube.com/watch?v=ul_9qe_fiTY
+
+## Team: Core Coder Conquerors
+⟹ Developers:
+
+Jitendra Chilate  : https://www.linkedin.com/in/jitendra-chilate/
+
+Jitesh Tambekar   : https://www.linkedin.com/in/jitesh-tambekar-73490924/
+
+Sandeepkumar Gupta: https://www.linkedin.com/in/gupta-sandeepkumar/ 

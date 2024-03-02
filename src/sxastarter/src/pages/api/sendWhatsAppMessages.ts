@@ -8,16 +8,11 @@ export default async function sendWhatsAppMessagesHandler(req: NextApiRequest, r
     const whatsAppNumbersArray = auditSettings.item.recipientWhatsAppNumbers.value.split(',');
     const whatsAppMessageTemplate = auditSettings.item.whatsAppMessageTemplate.value;
     const currentTime = new Date().toLocaleString();
-    // const message = `*Item Audit Updates made at ${currentTime}.*\n`
-    //   + `*Name*: ${req.body.DataItem.Name}\n`
-    //   + `*ID*: ${req.body.DataItem.Id}\n`
-    //   + `*Previous State*: ${req.body.PreviousState?.DisplayName}\n`
-    //   + `*Current State*: ${req.body.NextState?.DisplayName}`;
-const message = whatsAppMessageTemplate.replace('#CurrentDateTime#',currentTime)
-.replace('#ItemName#', req.body.DataItem.Name)
-.replace('#ItemID#', req.body.DataItem.Id)
-.replace('#PreviousState#', req.body.PreviousState?.DisplayName)
-.replace('#CurrentState#', req.body.NextState?.DisplayName);
+    const message = whatsAppMessageTemplate.replace('#CurrentDateTime#',currentTime)
+    .replace('#ItemName#', req.body.DataItem.Name)
+    .replace('#ItemID#', req.body.DataItem.Id)
+    .replace('#PreviousState#', req.body.PreviousState?.DisplayName)
+    .replace('#CurrentState#', req.body.NextState?.DisplayName);
 
     await Promise.all(whatsAppNumbersArray.map(async (whatsappPhoneNumber: string) => {
       await sendWhatsAppMessage(whatsappPhoneNumber, message);
