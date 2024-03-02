@@ -27,7 +27,7 @@
 ## Installation instructions
 ⟹ Setup Facebook Developer Account
 
-Create a Facebook Developer Account and setup WhatsApp API based on this document ![Create a Facebook Developer Account and setup WhatsApp API](docs/Create-Facebook-Developer-and-Setup-WhatsApp-API.pdf "Create a Facebook Developer Account and setup WhatsApp API")
+Create a Facebook Developer Account and setup WhatsApp API based on this document [Create a Facebook Developer Account and setup WhatsApp API](docs/Create-Facebook-Developer-and-Setup-WhatsApp-API.pdf?raw=true)
 
 ⟹ XM cloud local instance setup
 
@@ -82,7 +82,7 @@ Once it opens the browser, login with Sitecore cloud portal user you have or cre
 1. Send message to take action as commands - Approve, Reject and Approve in whatsapp. 
 2. XM cloud Webhook is not called when item > submitted > rejected > submitted again case. Frist 2 states it calls the webhook and 3rd item i.e. submit again does not call the webhook. This happened in local, not sure in the XM Cloud App. We will investigate this in detail.
 3. Include URL of the changed item,  include important field names and values, in the message.
-4. Make Bearer   
+4. Renew Bearer token if no more valid or every 24 hours programmatically.   
 ## References
 WhatsApp API Setup https://www.youtube.com/watch?v=ul_9qe_fiTY
 
