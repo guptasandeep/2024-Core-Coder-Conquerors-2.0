@@ -76,15 +76,20 @@ Once it opens the browser, login with Sitecore cloud portal user you have or cre
 3. Traverse to Item : /sitecore/content/Skate Park/Skate Part Site/Settings/Items Audit Update Settings. Provide the WhatsApp phone numbers separated by comma (,) with Country code.
 
 4. In the file .\2024-Core-Coder-Conquerors\src\sxastarter\src\pages\api\whatsapp.ts, find PROVIDE_Bearer_TOKEN_HERE and replace it with Bearer token from the WhatsApp API Setup Dashboard.  Save.
+   
+![Bearer Token in WhatsApp API setup](/docs/images/01_WhatsApp_Token.png?raw=true)
 
-4. Please check the Video for steps to test the feature.
+![Bearer Token in Next JS code](/docs/images/02_WhatsApp_Token_NextJS.png?raw=true)
+
+5. Please check the Video for steps to test the feature.
 
 ## Future Improvements
 
 1. Send message to take action as commands - Approve, Reject and Approve in whatsapp. 
 2. XM cloud Webhook is not called when item > submitted > rejected > submitted again case. Frist 2 states it calls the webhook and 3rd item i.e. submit again does not call the webhook. This happened in local, not sure in the XM Cloud App. We will investigate this in detail.
 3. Include URL of the changed item,  include important field names and values, in the message.
-4. Renew Bearer token if no more valid or every 24 hours programmatically.   
+4. Renew Bearer token if no more valid or every 24 hours programmatically.
+   
 ## References
 
 WhatsApp API Setup https://www.youtube.com/watch?v=ul_9qe_fiTY
