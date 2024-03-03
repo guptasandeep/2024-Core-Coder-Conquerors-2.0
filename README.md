@@ -27,7 +27,7 @@
 ## Installation instructions
 ⟹ Setup Facebook Developer Account
 
-1. Create a Facebook Developer Account and setup WhatsApp API based on this document [Create a Facebook Developer Account and setup WhatsApp API](docs/Create-Facebook-Developer-and-Setup-WhatsApp-API.pdf?raw=true)
+1. Create a Facebook Developer Account and setup WhatsApp API based on this document [Create a Facebook Developer Account and setup WhatsApp API](docs/Create-Facebook-Developer-and-Setup-WhatsApp-API.pdf)
 
 2. Once you have tested the Send Message from the WhatsApp Setup page, reply the same chat with some text. It can be any text. It is needed so that we can recieve the item update messages from our implementation. This seems to be required since "From" is a Test nuumber or we use the free service. Maybe in paid version this might not be needed.
 
@@ -75,13 +75,24 @@ Once it opens the browser, login with Sitecore cloud portal user you have or cre
 
 3. Traverse to Item : /sitecore/content/Skate Park/Skate Part Site/Settings/Items Audit Update Settings. Provide the WhatsApp phone numbers separated by comma (,) with Country code.
 
+![Items Audit Update Settings](/docs/images/04_Items_Audit_Update_Settings.png?raw=true)
+
 4. In the file .\2024-Core-Coder-Conquerors\src\sxastarter\src\pages\api\whatsapp.ts, find PROVIDE_Bearer_TOKEN_HERE and replace it with Bearer token from the WhatsApp API Setup Dashboard.  Save.
    
 ![Bearer Token in WhatsApp API setup](/docs/images/01_WhatsApp_Token.png?raw=true)
 
 ![Bearer Token in Next JS code](/docs/images/02_WhatsApp_Token_NextJS.png?raw=true)
 
-5. Please check the Video for steps to test the feature.
+5. Traverse to /sitecore/content/Skate Park/Skate Part Site/Home/Product Listing, Right click and insert new Product page item. Click on Review in ribbon > Submit. Provide the comment and submit. Then click on Approve. Provide the comment and submit. Both the times on state change, you must have recieved the WhatsApp messages on the registered numbers. 
+
+![WhatsApp Images](/docs/images/03_WhatsApp_Chat.png?raw=true)
+
+**If you don't receive the message please send some dummy text to the Test whatsapp number, and try creating new Product item again and go through the workflow.**
+
+Product Workflow is applied to Product Template.
+![Bearer Token in Next JS code](/docs/images/05_Product_Workflow.png?raw=true)
+
+6. Please check the Video for steps to test the feature.
 
 ## Future Improvements
 
