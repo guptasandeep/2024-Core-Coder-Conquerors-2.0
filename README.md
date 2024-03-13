@@ -19,7 +19,7 @@
 
 ## Video link
 
-⟹ [Core Coder Conquerors Demo Video](docs/Core Coder Conquerors Demo.webm)
+⟹ Video [Core Coder Conquerors Demo Video](docs/Core%20Coder%20Conquerors%20Demo.webm?raw=true)
 
 ## Pre-requisites and Dependencies
 
